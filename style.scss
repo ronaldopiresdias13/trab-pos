@@ -1,0 +1,248 @@
+$color-body: #6495ED;
+
+$primary-color:              #51cbce !default;
+$primary-states-color:       darken($primary-color, 10%) !default;
+$success-color:              #32CD32 !default;
+$success-states-color:       darken($success-color, 10%) !default;
+$poke-color:     #163f5e !default;
+
+$white-color:                #FFFFFF !default;
+$white-bg:                   #FFFFFF !default;
+$orange-bg:                  #e95e38 !default;
+
+$transparent-bg:             transparent !default;
+$padding-large-vertical:       15px !default;
+$padding-large-horizontal:     48px !default;
+$font-size-large:              1rem         !default;
+$border-radius-large:           6px !default;
+
+
+$font-size-h1:                 3.5em        !default;
+$font-size-h2:                 2.5em        !default;
+$font-size-h3:                 2em          !default;
+$font-size-h4:                 1.714em      !default;
+$font-size-h5:                 1.57em       !default;
+$font-size-h6:                 1em          !default;
+
+
+body{
+    background-color: $color-body;
+}
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+.box {@include border-radius(10px)}
+
+@mixin btn-styles($btn-color, $btn-states-color) {
+    background-color: $btn-color;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    &:active:focus,
+    &:active:hover,
+    &.active:focus,
+    &.active:hover,
+    .show > &.dropdown-toggle,
+    .show > &.dropdown-toggle:focus,
+    .show > &.dropdown-toggle:hover {
+        background-color: $btn-states-color !important;
+        color: $white-color !important;
+        box-shadow: none !important;
+    }
+
+    &:not([data-action]):hover{
+        box-shadow:  none;
+    }
+
+    &.disabled,
+    &:disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        &,
+        &:hover,
+        &:focus,
+        &.focus,
+        &:active,
+        &.active {
+            background-color: $btn-color;
+            border-color: $btn-color;
+        }
+    }
+
+    &.btn-simple{
+        color: $btn-color;
+        border-color: $btn-color;
+
+        &:hover,
+        &:focus,
+        &:active{
+            background-color: $transparent-bg;
+            color: $btn-states-color;
+            border-color: $btn-states-color;
+            box-shadow: none;
+        }
+    }
+
+    &.btn-link{
+        color: $btn-color;
+
+        &:hover,
+        &:focus,
+        &:active,
+        &:active:focus {
+            background-color: $transparent-bg;
+            color: $btn-states-color;
+            text-decoration: none;
+            box-shadow: none;
+        }
+    }
+}
+.btn-primary { @include btn-styles($primary-color, $primary-states-color); }
+.btn-success { @include btn-styles($success-color, $success-states-color); }
+
+
+@mixin btn-size($padding-vertical, $padding-horizontal, $font-size, $border){
+    font-size: $font-size;
+    border-radius: $border;
+    padding: $padding-vertical $padding-horizontal;
+ 
+    &.btn-simple{
+        padding: $padding-vertical - 1 $padding-horizontal - 1;
+    }
+ 
+ }
+ .btn-lg{
+    @include btn-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $border-radius-large);
+ }
+.container{
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em 0;
+}
+
+.search {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    padding: 1em 0;
+  }
+
+  
+  .search .search-input,
+  .search .search-button {
+    border: 0;
+    padding: 1em;
+  }
+  
+  .search .search-input {
+    width: 100%;
+  }
+  
+  .search .search-button {
+    background-color: #2b75bb;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  
+  .error {
+    display: none;
+    font-size: 1.5em;
+  }
+  
+  .pokemon {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*background-color: #f2f2f2;*/
+    background-color: #fff;
+    opacity: 1;
+    color: white; 
+  }
+  
+  .pokemon .pokemon-picture {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid #FFC312;
+    margin: 10px;
+  }
+  
+  .pokemon .pokemon-picture img {
+    width: 100%;
+  }
+  
+  
+  .pokemon .pokemon-info {
+    width: 100%;
+    background-color: $poke-color;
+  }
+  
+  .pokemon-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    padding: 1em;
+  }
+  
+  
+  .pokemon-info .name,
+  .pokemon-info .skill,
+  .pokemon-info .weight,
+  .pokemon-info .height  {
+    width: 100%;
+    padding: .5em .2em;
+    font-size: 1.7em;
+  }
+  
+  .pokemon-info .name {
+    font-size: 2.5em;
+    text-align: center;
+    color: $white-color; 
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .pokemon-info .number{
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+    text-transform: capitalize;
+  }
+  .pokemon-info .skill{
+    text-align: justify;
+    font-size: 1em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .pokemon-info .weight,
+  .pokemon-info .height {
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+  }
+  
+  .fade {
+    animation: fadeEfect 4s;
+  }
+ h1{ font-size: $font-size-h1; color: $white-color;}
+ h2{ font-size: $font-size-h2; color: $white-color;}
+ h3{ font-size: $font-size-h3; color: $white-color;}
+ h4{ font-size: $font-size-h4; color: $white-color;}
+ h5{ font-size: $font-size-h5; color: $white-color;}
+ h6{ font-size: $font-size-h6; color: $white-color;}

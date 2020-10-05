@@ -70,3 +70,20 @@ searchButton.addEventListener('click', event => {
   // container.classList.add('fade');
 
 });
+
+
+// GEOLOCATION //////
+
+var x = document.getElementById('demo');
+function getLocation(){
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(function(position){
+      x.innerHTML = "Latitude: "+ position.coords.latitude + "<br>Longitude: " + position.coords.longitude +
+      "<br>TimeStamp: " + position.timestamp;
+    }, function(err){
+      console.error(console.error())
+    });
+  }else{
+    x.innerHTML = "Geolocation não encontrada"
+  }
+}
